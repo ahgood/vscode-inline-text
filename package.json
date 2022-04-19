@@ -1,0 +1,29 @@
+{
+	"name": "vscode-inline-text-and-create-bookmarklet",
+	"displayName": "Inline Text and Create Bookmarklet",
+	"description": "A VS Code extension to remove indent and line break(change to one line), and an additional command to create bookmarklet from JavaScript code(inline text and add bookmarklet wrapper).",
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.22.0"
+	},
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onCommand:vscode-inline-text.inlineText",
+		"onCommand:vscode-inline-text.createBookmarklet"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "vscode-inline-text.inlineText",
+				"title": "Inline Text"
+			},
+			{
+				"command": "vscode-inline-text.createBookmarklet",
+				"title": "Inline Text And Create Bookmarklet"
+			}
+		]
+	}
+}
