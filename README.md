@@ -18,7 +18,7 @@ Linux/Windows: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>p</kbd> -> Type `Inline
 
 macOS: <kbd>command</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> -> Type `Inline Text`
 
-![Screenshot](https://github.com/ahgood/vscode-inline-text/raw/master/inline-text-and-create-bookmarklet.png)
+![Screenshot](https://github.com/ahgood/vscode-inline-text/blob/main/inline-text-and-create-bookmarklet.png?raw=true)
 
 ## Credit
 
