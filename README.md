@@ -6,7 +6,7 @@ A VS Code extension to remove indent and line break(change to one line), and an 
 
 1. Inline Text - Remove all indent and line break
 
-2. Inline Text And Create Bookmarklet - Inline text and add bookmarklet wapper(`javascript:(()=>/*JS code in one line*/)()`)
+2. Inline Text and Create Bookmarklet - Inline text and add bookmarklet wapper(`javascript:(()=>/*JS code in one line*/)()`)
 
 ## Installation
 

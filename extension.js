@@ -1,13 +1,19 @@
 const vscode = require('vscode');
 
+function getAllTextRage(document) {
+	const firstLine = document.lineAt(0);
+	const lastLine = document.lineAt(document.lineCount - 1);
+	return new vscode.Range(firstLine.range.start, lastLine.range.end);
+}
+
 function inlineText() {
 	const editor = vscode.window.activeTextEditor;
-
 	if (!editor) return {};
 
 	const document = editor.document;
-	const documentText = document.getText();
-
+	const selection = editor.selection;
+	const selectedText = document.getText(selection);
+	const documentText = selectedText || document.getText();
 	if (documentText === '') return {};
 
 	let updatedDocumentText = '';
@@ -16,9 +22,7 @@ function inlineText() {
 		updatedDocumentText += line.trim();
 	});
 
-	const firstLine = document.lineAt(0);
-	const lastLine = document.lineAt(document.lineCount - 1);
-	const textRange = new vscode.Range(firstLine.range.start, lastLine.range.end);
+	const textRange = selectedText === '' ? getAllTextRage(document) : selection;
 	
 	return { editor, textRange, updatedDocumentText };
 }
@@ -30,7 +34,7 @@ function activate(context) {
 		editor.edit(edit => edit.replace(textRange, updatedDocumentText));
 	});
 
-	const disposableBookmarkletify = vscode.commands.registerCommand('vscode-inline-text.createBookmarklet', () => {
+	const disposableInlineTextAndCreateBookmarklet = vscode.commands.registerCommand('vscode-inline-text.createBookmarklet', () => {
 		const { editor, textRange, updatedDocumentText } = inlineText();
 		if (!textRange || !updatedDocumentText) return;
 		const bookmarklet = `javascript:(()=>{${updatedDocumentText}})();`;
@@ -38,7 +42,7 @@ function activate(context) {
 	});
 
 	context.subscriptions.push(disposableInlineText);
-	context.subscriptions.push(disposableBookmarkletify);
+	context.subscriptions.push(disposableInlineTextAndCreateBookmarklet);
 }
 
 function deactivate() { }

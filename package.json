@@ -5,7 +5,7 @@
   "publisher": "ahgood",
   "repository": "https://github.com/ahgood/vscode-inline-text",
   "icon": "icon.png",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.22.0"
 	},
@@ -25,7 +25,7 @@
 			},
 			{
 				"command": "vscode-inline-text.createBookmarklet",
-				"title": "Inline Text And Create Bookmarklet"
+				"title": "Inline Text and Create Bookmarklet"
 			}
 		]
 	}
