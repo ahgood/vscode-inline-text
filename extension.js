@@ -41,8 +41,19 @@ function activate(context) {
 		editor.edit(edit => edit.replace(textRange, bookmarklet));
 	});
 
+	const disposableRevertBookmarklet = vscode.commands.registerCommand('vscode-inline-text.createBookmarklet', () => {
+		const { editor, textRange, updatedDocumentText } = inlineText();
+		if (!textRange || !updatedDocumentText) return;
+		let revertedCode = decodeURIComponent(updatedDocumentText);
+		// TODO: Support 3 types of the bookmarklet format:
+		// javascript:(function(){...})();
+		// javascript:(()=>{...})();
+		// javascript:...;void();
+	});
+
 	context.subscriptions.push(disposableInlineText);
 	context.subscriptions.push(disposableInlineTextAndCreateBookmarklet);
+	context.subscriptions.push(disposableRevertBookmarklet);
 }
 
 function deactivate() { }
